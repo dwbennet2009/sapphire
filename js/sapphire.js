@@ -1,5 +1,7 @@
 var MS_PER_SECOND = 1000;
 var GATHER_TIME = MS_PER_SECOND;
+var VERSION = "0.001";
+var GAME_NAME = "Sapphire";
 
 function Gatherer(resource) {
     this.trips = 0;
@@ -128,9 +130,6 @@ Game.prototype.loop = function () {
     this.player.town.tick(dt);
     this.renderButtons();
     this.renderStatus();
-    
-    
-    
 };
 
 Game.prototype.clearStatus = function () {
@@ -184,9 +183,8 @@ $(window).resize(function () {
 
 $(document).ready(function () {
     var canvas = document.getElementById("game");
-
+    document.title = GAME_NAME + " " + VERSION;
     window.S = new Game(canvas);
 
     S.begin();
-    
 });
