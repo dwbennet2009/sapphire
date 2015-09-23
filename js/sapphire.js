@@ -3,8 +3,6 @@
 // ================================================================================
 var MS_PER_SECOND = 1000;
 var GATHER_TIME = MS_PER_SECOND;
-var VERSION = "0.001";
-var GAME_NAME = "Sapphire";
 
 // ================================================================================
 // ============== GATHERER
@@ -80,6 +78,7 @@ function Game(canvas) {
     this.canvas = canvas;
 
     this.title = "Sapphire";
+    this.version = 0.001;
     this.player = new Player();
     this.lastUpdate = Date.now();
 
@@ -241,32 +240,28 @@ Game.prototype.clearStatus = function () {
 };
 
 Game.prototype.renderStatus = function () {
+    // Text style
     this.cxt.fillStyle = '#434382';
     this.cxt.strokeRect(200, 100, 500, 250);
 
+    // Gatherers
     this.cxt.font = '100 26px Raleway';
+
     this.cxt.fillText("Food: " + this.player.town.food, 240, 140);
     this.cxt.fillText(this.player.town.foodGather, 540, 140);
-
     this.cxt.fillText("Wood: " + this.player.town.wood, 240, 180);
     this.cxt.fillText(this.player.town.woodGather, 540, 180);
-
     this.cxt.fillText("Stone: " + this.player.town.stone, 240, 220);
     this.cxt.fillText(this.player.town.stoneGather, 540, 220);
-
     this.cxt.fillText("Unemployed: ", 350, 300);
     this.cxt.fillText(this.player.town.unempGather, 540, 300);
 
+    // Buildings
     this.cxt.strokeRect(200, 520, 400, 250);
 
     this.cxt.fillText("Houses: " + this.player.town.houses, 240, 580);
-    this.cxt.fillText(this.player.town.foodGather, 540, 140);
-
     this.cxt.fillText("Mills: " + this.player.town.mills, 240, 620);
-    this.cxt.fillText(this.player.town.foodGather, 540, 140);
-
     this.cxt.fillText("Quarries: " + this.player.town.quarries, 240, 660);
-    this.cxt.fillText(this.player.town.foodGather, 540, 140);
 };
 
 Game.prototype.clearLand = function () {
@@ -323,8 +318,8 @@ $(window).resize(function () {
 
 $(document).ready(function () {
     var canvas = document.getElementById("game");
-    document.title = GAME_NAME + " " + VERSION;
     window.S = new Game(canvas);
+    document.title = S.title + " " + S.version;
 
     S.begin();
 });
