@@ -1,6 +1,14 @@
 function initButtons() {
     
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var plusButtonFood = new Button(720, 110, 35, 35, 'img/plus.png');
+=======
     var plusButtonFood = new Button(720, 110, 35, 35,'img/plus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var plusButtonFood = new Button(720, 110, 35, 35,'img/plus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     plusButtonFood.action = function () {
         if (S.player.town.unempGather > 0) {
             S.player.town.foodGather++;
@@ -8,7 +16,15 @@ function initButtons() {
         }
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var minusButtonFood = new Button(780, 110, 35, 35, 'img/minus.png');
+=======
     var minusButtonFood = new Button(780, 110, 35, 35,'img/minus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var minusButtonFood = new Button(780, 110, 35, 35,'img/minus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     minusButtonFood.action = function () {
         if (S.player.town.foodGather > 0) {
             S.player.town.foodGather--;
@@ -16,7 +32,15 @@ function initButtons() {
         }
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var plusButtonWood = new Button(720, 150, 35, 35, 'img/plus.png');
+=======
     var plusButtonWood = new Button(720, 150, 35, 35,'img/plus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var plusButtonWood = new Button(720, 150, 35, 35,'img/plus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     plusButtonWood.action = function () {
         if (S.player.town.unempGather > 0) {
             S.player.town.woodGather++;
@@ -24,7 +48,15 @@ function initButtons() {
         }
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var minusButtonWood = new Button(780, 150, 35, 35, 'img/minus.png');
+=======
     var minusButtonWood = new Button(780, 150, 35, 35,'img/minus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var minusButtonWood = new Button(780, 150, 35, 35,'img/minus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     minusButtonWood.action = function () {
         if (S.player.town.woodGather > 0) {
             S.player.town.woodGather--;
@@ -32,7 +64,15 @@ function initButtons() {
         }
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var plusButtonStone = new Button(720, 190, 35, 35, 'img/plus.png');
+=======
     var plusButtonStone = new Button(720, 190, 35, 35,'img/plus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var plusButtonStone = new Button(720, 190, 35, 35,'img/plus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     plusButtonStone.action = function () {
         if (S.player.town.unempGather > 0) {
             S.player.town.stoneGather++;
@@ -40,7 +80,15 @@ function initButtons() {
         }
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var minusButtonStone = new Button(780, 190, 35, 35, 'img/minus.png');
+=======
     var minusButtonStone = new Button(780, 190, 35, 35,'img/minus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var minusButtonStone = new Button(780, 190, 35, 35,'img/minus.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     minusButtonStone.action = function () {
         if (S.player.town.stoneGather > 0) {
             S.player.town.stoneGather--;
@@ -48,11 +96,31 @@ function initButtons() {
         }
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var buyHouse = new Button(620, 550, 70, 35, 'img/buy.png');
+=======
     var buyHouse = new Button(620, 550, 70, 35,'img/buy.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var buyHouse = new Button(620, 550, 70, 35,'img/buy.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     buyHouse.action = function () {
         S.player.town.houses++;
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var buyMill = new Button(620, 590, 70, 35, 'img/buy.png');
+    buyMill.action = function () {};
+
+    var buyQuarry = new Button(620, 630, 70, 35, 'img/buy.png');
+    buyQuarry.action = function () {};
+
+    var farmButton = new Button(320, 400, 100, 50, 'img/farm.png');
+=======
+=======
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     var buyMill = new Button(620, 590, 70, 35,'img/buy.png');
     buyMill.action = function () {};
 
@@ -60,11 +128,23 @@ function initButtons() {
     buyQuarry.action = function () {};
 
     var farmButton = new Button(320, 400, 100, 50,'img/farm.png');
+<<<<<<< HEAD
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     farmButton.action = function () {
         S.player.town.food++;
     };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+    var hireButton = new Button(450, 400, 100, 50, 'img/hire.png');
+=======
     var hireButton = new Button(450, 400, 100, 50,'img/hire.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+    var hireButton = new Button(450, 400, 100, 50,'img/hire.png');
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     hireButton.action = function () {
         if (S.player.town.food >= 20) {
             S.player.town.unempGather++;
@@ -86,11 +166,25 @@ function initButtons() {
     S.buttons.push(farmButton);
     S.buttons.push(hireButton);
     
+<<<<<<< HEAD
+<<<<<<< HEAD
+}
+
+function initTextLabels() {
+    
+    var font = '100 26px Arial';
+=======
+=======
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
 };
 
 function initTextLabels() {
     
     var font = '100 26px Raleway';
+<<<<<<< HEAD
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     var color = '#434382';
 
    
@@ -125,3 +219,20 @@ function initTextLabels() {
     
     
 }
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+function initEvents() {
+
+    var evtIntro = new Event(300, 300, false);
+
+    
+    S.events = [];
+    
+    S.events.push(evtIntro);
+
+}
+=======
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
+=======
+>>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
