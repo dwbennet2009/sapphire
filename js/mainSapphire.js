@@ -96,14 +96,7 @@ Game.prototype.begin = function () {
     
     initButtons();
     initTextLabels();
-<<<<<<< HEAD
-<<<<<<< HEAD
     initEvents();
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-    
     requestAnimationFrame(this.loop.bind(this));
     
 };
@@ -121,8 +114,6 @@ Game.prototype.loop = function () {
     this.renderButtons();
     this.renderStatus();
     this.renderLand();
-<<<<<<< HEAD
-<<<<<<< HEAD
     
     this.checkEvents();
     
@@ -141,10 +132,6 @@ Game.prototype.checkEvents = function () {
             this.cxt.drawImage(this.cxt.speech, this.events[i].x, this.events[i].y, 500, 500);
         }
     }
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
 };
 
 Game.prototype.clearStatus = function () {
@@ -152,28 +139,12 @@ Game.prototype.clearStatus = function () {
 };
 
 Game.prototype.renderStatus = function () {
-<<<<<<< HEAD
-<<<<<<< HEAD
     initTextLabels();
     for (var i = 0; i < this.textLabels.length; i++) {
         var textLabel = this.textLabels[i];
         this.cxt.fillStyle = textLabel.color;
         this.cxt.fillText(textLabel.txt, textLabel.x, textLabel.y);
     }
-=======
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-    
-    for (var i = 0; i < this.textLabels.length; i++) {
-        var textLabel = this.textLabels[i];
-        this.cxt.fillStyle = textLabel.color;
-        this.cxt.fillText(textLabel.txt, textLabel.x, textLabel.y)
-    }
-    console.log(S.player.town.food);
-<<<<<<< HEAD
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
 };
 
 Game.prototype.renderButtons = function () {
@@ -197,15 +168,7 @@ Game.prototype.renderLand = function () {
 
     if (this.player.town.houses > 0 && this.player.town.houses <= 2) {
         this.cxt.houses = new Image();
-<<<<<<< HEAD
-<<<<<<< HEAD
-        this.cxt.houses.src = 'img/house1.jpg';
-=======
         this.cxt.houses.src = 'img/house1.png';
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-=======
-        this.cxt.houses.src = 'img/house1.png';
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
         this.cxt.drawImage(this.cxt.houses, 1130, 470, 200, 200);
     } else if (this.player.town.houses > 2 && this.player.town.houses <= 4) {
         this.cxt.houses = new Image();
@@ -218,13 +181,6 @@ Game.prototype.renderLand = function () {
     }
 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
 Game.prototype.resize = function () {
     this.canvas = document.getElementById('game');
     this.width = window.innerWidth;
@@ -233,14 +189,7 @@ Game.prototype.resize = function () {
     this.canvas.height = this.height;
 
     // Draw static text
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     this.cxt.font = '100 22px Arial';
-=======
-    this.cxt.font = '100 22px Raleway';
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-=======
-    this.cxt.font = '100 22px Raleway';
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
     this.cxt.fillText("Gatherers", 500, 80);
 };

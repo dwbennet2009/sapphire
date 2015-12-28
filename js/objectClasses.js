@@ -31,8 +31,6 @@ function TextLabel(x, y, txt, font, color) {
     this.update = function() {
         this.txt = txt;   
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 
 
@@ -44,8 +42,4 @@ function Event(x, y, status) {
     this.y = y;
     
     this.status = false;
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
-=======
->>>>>>> 8fed4c300363e1d933a0a45d0c958639f2784e44
 }
