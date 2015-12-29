@@ -64,7 +64,7 @@ function Game(canvas) {
     this.canvas = canvas;
 
     this.title = "Sapphire";
-    this.version = 0.001;
+    this.version = 0.2;
     this.player = new Player();
     this.lastUpdate = Date.now();
 
@@ -94,7 +94,6 @@ Game.prototype.onmousedown = function (event) {
     }
     if (S.eventTrigger==true)
     {
-        console.log("Debug1");
         S.events[0].count++;
     }
 }
@@ -123,6 +122,7 @@ Game.prototype.loop = function () {
     this.renderStatus();
     if(this.frame == 1) this.renderLand();
     else if(this.frame == 2) this.renderCats();
+    else if(this.frame == 99) this.renderAbout();
     
     this.checkEvents();
     
@@ -140,8 +140,8 @@ Game.prototype.checkEvents = function () {
             this.cxt.speech = new Image();
             this.cxt.speech.src = "img/message1.png";
             this.cxt.drawImage(this.cxt.speech, this.events[i].x, this.events[i].y, 600, 400);
-            this.cxt.fillText(this.events[i].evtTexts[this.events[i].count],this.events[i].x + 200, this.events[i].y + 100);
-            console.log(this.events[i].evtTexts[this.events[i].count]+" | "+this.events[i].count);
+            //this.cxt.fillText(this.events[i].evtTexts[this.events[i].count],this.events[i].x + 200, this.events[i].y + 100);
+            wrapText(this.cxt, this.events[i].evtTexts[this.events[i].count],this.events[i].x + 180, this.events[i].y + 70, 400, 28);
             if(this.events[i].count>=this.events[i].maxcount)
             {
                 this.events[i].status = false;
@@ -203,6 +203,20 @@ Game.prototype.renderCats = function () {
     this.cxt.cats = new Image();
     this.cxt.cats.src = 'img/cats.png';
     this.cxt.drawImage(this.cxt.cats, 900, 100, 700, 550);
+};
+
+Game.prototype.renderAbout = function () {
+    this.cxt.rect(900,100,700,550);
+    this.cxt.stroke();
+    var aboutTxt = "This is the about screen.  Here will be various version information, as well as save and loading buttons and setup.  Before release, developer notes will go here.";
+    var versionTxt = this.title+":  Version - "+this.version;
+    var fontOld = this.cxt.font;
+    this.cxt.font = '100 30px Arial';
+    wrapText(this.cxt, aboutTxt, 920,150,650,33);
+    wrapText(this.cxt, versionTxt, 920,350,650,33);
+    this.cxt.font = fontOld;
+    
+    
 };
 
 

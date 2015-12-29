@@ -73,30 +73,40 @@ function initButtons() {
     
     var oneButton = new Button(910, 66, 70, 32,'img/oneA.png');
     var twoButton = new Button(1000, 66, 70, 32,'img/twoA.png');
+    var aboutButton = new Button(1500, 66, 70, 32,'img/aboutA.png');
     
     oneButton.action = function () { 
         if(oneButton.imgSrc == 'img/oneA.png'){
             oneButton.imgSrc = 'img/oneB.png';
             twoButton.imgSrc = 'img/twoA.png';
+            aboutButton.imgSrc = 'img/aboutA.png';
             S.frame = 1;
-        }
-        else if(oneButton.imgSrc == 'img/oneB.png'){
-            oneButton.imgSrc = 'img/oneA.png';
         }
         oneButton.update();
         twoButton.update();
+        aboutButton.update();
     };
     twoButton.action = function () {
         if(twoButton.imgSrc == 'img/twoA.png'){
             twoButton.imgSrc = 'img/twoB.png';
             oneButton.imgSrc = 'img/oneA.png';
+            aboutButton.imgSrc = 'img/aboutA.png';
             S.frame = 2;
-        }
-        else if(twoButton.imgSrc == 'img/twoB.png'){
-            twoButton.imgSrc = 'img/twoA.png';
         }
         oneButton.update();
         twoButton.update();
+        aboutButton.update();
+    };
+    aboutButton.action = function () {
+        if(aboutButton.imgSrc == 'img/aboutA.png'){
+            aboutButton.imgSrc = 'img/aboutB.png';
+            oneButton.imgSrc = 'img/oneA.png';
+            twoButton.imgSrc = 'img/twoA.png';
+            S.frame = 99;
+        }
+        oneButton.update();
+        twoButton.update();
+        aboutButton.update();
     };
     
     S.buttons = [];
@@ -115,6 +125,7 @@ function initButtons() {
     
     S.buttons.push(oneButton);
     S.buttons.push(twoButton);
+    S.buttons.push(aboutButton);
 }
 
 function initTextLabels() {
@@ -153,8 +164,8 @@ function initTextLabels() {
 
 function initEvents() {
     
-    var evtIntroText = ["", "Hello!", "Welcome to Sapphire!", "Three", ""]; 
-    var evtIntro = new Event(450, 200, false, 0, 4, evtIntroText);
+    var evtIntroText = ["", "Hello!", "Welcome to Sapphire!  This is a very long string in order to test text wrapping.  There should be several line breaks here automatically added in.", "This is also another long string.  Hopefully, again, the text is properly wrapped and contained within this textbox.  Otherwise this will be a very long single line", "Goodbye", ""]; 
+    var evtIntro = new Event(450, 200, false, 0, evtIntroText.length-1, evtIntroText);
 
     S.events = [];
     
