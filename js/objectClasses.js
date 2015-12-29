@@ -15,6 +15,9 @@ function Button(x, y, w, h, imgSrc) {
     this.action = function () {
         alert("This button has no action");
     };
+    this.update = function () {
+        this.img.src = this.imgSrc;
+    }
 }
 
 // ================================================================================
@@ -35,11 +38,16 @@ function TextLabel(x, y, txt, font, color) {
 
 
 // ================================================================================
-// ============== Evemts
+// ============== Events
 // ================================================================================
-function Event(x, y, status) {
+function Event(x, y, status, count, maxcount, evtTexts) {
     this.x = x;
     this.y = y;
     
     this.status = false;
+    
+    this.count = count;
+    this.maxcount = maxcount;
+    
+    this.evtTexts = evtTexts;
 }

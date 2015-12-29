@@ -73,6 +73,9 @@ function Game(canvas) {
         down: 0
     };
 
+    this.eventTrigger = false;
+    this.frame = 1;
+    
     // Add listener for mousedown
     this.canvas.addEventListener("mousedown", this.onmousedown, false);
 }
@@ -85,9 +88,14 @@ Game.prototype.onmousedown = function (event) {
     y -= this.offsetTop;
 
     for (var i = 0; i < S.buttons.length; i++) {
-        if (S.buttons[i].intersect(x, y)) {
+        if (S.buttons[i].intersect(x, y) && S.eventTrigger==false) {
             S.buttons[i].action();
         }
+    }
+    if (S.eventTrigger==true)
+    {
+        console.log("Debug1");
+        S.events[0].count++;
     }
 }
 
@@ -113,29 +121,38 @@ Game.prototype.loop = function () {
     this.player.town.tick(dt);
     this.renderButtons();
     this.renderStatus();
-    this.renderLand();
+    if(this.frame == 1) this.renderLand();
+    else if(this.frame == 2) this.renderCats();
     
     this.checkEvents();
     
 };
 
 Game.prototype.checkEvents = function () {
-    if(S.player.town.food > 5)
+    if(S.player.town.food > 5 && S.events[0].status == false && S.events[0].count == 0){
         S.events[0].status = true;
+        S.eventTrigger = true;
+    }
     
     for (var i = 0; i < this.events.length; i++)
     {
         if(this.events[i].status == true){
-            console.log(this.events[i].x+" "+this.events[i].y);
             this.cxt.speech = new Image();
-            this.cxt.speech.src = "img/speech_bubble.jpg";
-            this.cxt.drawImage(this.cxt.speech, this.events[i].x, this.events[i].y, 500, 500);
+            this.cxt.speech.src = "img/message1.png";
+            this.cxt.drawImage(this.cxt.speech, this.events[i].x, this.events[i].y, 600, 400);
+            this.cxt.fillText(this.events[i].evtTexts[this.events[i].count],this.events[i].x + 200, this.events[i].y + 100);
+            console.log(this.events[i].evtTexts[this.events[i].count]+" | "+this.events[i].count);
+            if(this.events[i].count>=this.events[i].maxcount)
+            {
+                this.events[i].status = false;
+                this.eventTrigger = false;
+            }
         }
     }
 };
 
 Game.prototype.clearStatus = function () {
-    this.cxt.clearRect(200, 100, 400, 250);
+    this.cxt.clearRect(100, 100, 1000, 1000);
 };
 
 Game.prototype.renderStatus = function () {
@@ -156,7 +173,7 @@ Game.prototype.renderButtons = function () {
 };
 
 Game.prototype.clearLand = function () {
-    this.cxt.clearRect(800, 100, 700, 700);
+    this.cxt.clearRect(900, 100, 700, 550);
     this.cxt.clearRect(200, 520, 500, 250);
 };
 
@@ -180,6 +197,14 @@ Game.prototype.renderLand = function () {
         this.cxt.drawImage(this.cxt.houses, 1130, 470, 200, 200);
     }
 };
+
+Game.prototype.renderCats = function () {
+
+    this.cxt.cats = new Image();
+    this.cxt.cats.src = 'img/cats.png';
+    this.cxt.drawImage(this.cxt.cats, 900, 100, 700, 550);
+};
+
 
 Game.prototype.resize = function () {
     this.canvas = document.getElementById('game');
