@@ -49,14 +49,37 @@ function initButtons() {
 
     var buyHouse = new Button(620, 550, 70, 35,'img/buy.png');
     buyHouse.action = function () {
-        S.player.town.houses++;
+        if(S.player.town.wood >= S.player.town.houseCostW && S.player.town.stone >= S.player.town.houseCostS){
+            S.player.town.houses++;
+            S.player.town.wood -= S.player.town.houseCostW;
+            S.player.town.stone -= S.player.town.houseCostS;
+            S.player.town.houseCostW = Math.round(S.player.town.houseCostW * 1.20);
+            S.player.town.houseCostS = Math.round(S.player.town.houseCostS * 1.20);
+            S.player.town.villagersMax += 3;
+        }
     };
 
     var buyMill = new Button(620, 590, 70, 35, 'img/buy.png');
-    buyMill.action = function () {};
+    buyMill.action = function () {
+        if(S.player.town.wood >= S.player.town.millCostW && S.player.town.stone >= S.player.town.millCostS){
+            S.player.town.mills++;
+            S.player.town.wood -= S.player.town.millCostW;
+            S.player.town.stone -= S.player.town.millCostS;
+            S.player.town.millCostW = Math.round(S.player.town.millCostW * 1.20);
+            S.player.town.millCostS = Math.round(S.player.town.millCostS * 1.20);
+        }
+    };
 
     var buyQuarry = new Button(620, 630, 70, 35, 'img/buy.png');
-    buyQuarry.action = function () {};
+    buyQuarry.action = function () {
+        if(S.player.town.wood >= S.player.town.quarryCostW && S.player.town.stone >= S.player.town.quarryCostS){
+            S.player.town.quarries++;
+            S.player.town.wood -= S.player.town.quarryCostW;
+            S.player.town.stone -= S.player.town.quarryCostS;
+            S.player.town.quarryCostW = Math.round(S.player.town.quarryCostW * 1.20);
+            S.player.town.quarryCostS = Math.round(S.player.town.quarryCostS * 1.20);
+        }
+    };
 
     var farmButton = new Button(320, 400, 100, 50, 'img/farm.png');
     farmButton.action = function () {
@@ -65,9 +88,11 @@ function initButtons() {
 
     var hireButton = new Button(450, 400, 100, 50,'img/hire.png');
     hireButton.action = function () {
-        if (S.player.town.food >= 20) {
+        if (S.player.town.food >= S.player.town.unempCost && S.player.town.villagers < S.player.town.villagersMax) {
             S.player.town.unempGather++;
-            S.player.town.food -= 20;
+            S.player.town.food -= S.player.town.unempCost;
+            S.player.town.unempCost = Math.round(S.player.town.unempCost*1.15);
+            S.player.town.villagers++;
         }
     };
     
@@ -139,12 +164,19 @@ function initTextLabels() {
     var stoneLabel = new TextLabel(240,220,"Stone: " + S.player.town.stone, font, color);
     var stoneGatherLabel = new TextLabel(540, 220, S.player.town.stoneGather, font, color);
 
-    var unempLabel = new TextLabel(350, 300, "Villagers: ", font, color);
+    var unempLabel = new TextLabel(350, 300, "Unemployed: ", font, color);
     var unempGatherLabel = new TextLabel(540, 300, S.player.town.unempGather, font, color);
+    var unempCostLabel = new TextLabel(600, 300, "(Cost: "+ S.player.town.unempCost +")", font, color);
+    
+    var villagersLabel = new TextLabel(350, 340, "Villagers: ", font, color);
+    var villagersMaxLabel = new TextLabel(540, 340, S.player.town.villagers+" / "+S.player.town.villagersMax, font, color);
 
     var houseLabel = new TextLabel(240, 580, "Houses: " + S.player.town.houses, font, color);
+    var houseCostLabel = new TextLabel(380, 580, "( "+ S.player.town.houseCostW+ " W / "+S.player.town.houseCostS+ " S )", font, color);
     var millLabel = new TextLabel(240, 620, "Mills: " + S.player.town.mills, font, color);
+    var millCostLabel = new TextLabel(380, 620, "( "+ S.player.town.millCostW+ " W / "+S.player.town.millCostS+ " S )", font, color);
     var quarryLabel = new TextLabel(240, 660, "Quarries: " + S.player.town.quarries, font, color);
+    var quarryCostLabel = new TextLabel(380, 660, "( "+ S.player.town.quarryCostW+ " W / "+S.player.town.quarryCostS+ " S )", font, color);
     
     
     S.textLabels = [];
@@ -157,9 +189,15 @@ function initTextLabels() {
     S.textLabels.push(stoneGatherLabel);
     S.textLabels.push(unempLabel);
     S.textLabels.push(unempGatherLabel);
+    S.textLabels.push(unempCostLabel);
+    S.textLabels.push(villagersLabel);
+    S.textLabels.push(villagersMaxLabel);
     S.textLabels.push(houseLabel);
+    S.textLabels.push(houseCostLabel);
     S.textLabels.push(millLabel);
+    S.textLabels.push(millCostLabel);
     S.textLabels.push(quarryLabel);
+    S.textLabels.push(quarryCostLabel);
 }
 
 function initEvents() {

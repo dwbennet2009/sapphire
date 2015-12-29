@@ -21,13 +21,23 @@ function Town() {
     this.food = 0;
 
     this.houses = 0;
+    this.houseCostW = 20;
+    this.houseCostS = 20;
     this.mills = 0;
+    this.millCostW = 10;
+    this.millCostS = 30;
     this.quarries = 0;
+    this.quarryCostW = 30;
+    this.quarryCostS = 10;
 
     this.woodGather = 0;
     this.stoneGather = 0;
     this.foodGather = 0;
     this.unempGather = 0;
+    this.unempCost = 20;
+    
+    this.villagers = 0;
+    this.villagersMax = 3;
 
     this.gatherClock = 0;
 }
