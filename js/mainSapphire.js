@@ -162,7 +162,9 @@ Game.prototype.checkEvents = function () {
 };
 
 Game.prototype.clearStatus = function () {
-    this.cxt.clearRect(100, 100, 1000, 1000);
+    this.cxt.clearRect(0, 0, 1800, 1400);
+    this.cxt.fillStyle="#FFFFFF";
+    this.cxt.fillRect(0,0,1800,1400);
 };
 
 Game.prototype.renderStatus = function () {
