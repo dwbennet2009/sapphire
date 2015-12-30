@@ -157,6 +157,7 @@ function initTextLabels() {
     var font = '100 26px Arial';
     var color = '#434382';
    
+    var gatherersLabel = new TextLabel(500, 80, "Gatherers", font, color);
     var foodLabel = new TextLabel(240,140,"Food: " + S.player.town.food,font, color);
     var foodGatherLabel = new TextLabel(540,140,S.player.town.foodGather, font, color);
     var woodLabel = new TextLabel(240,180,"Wood: " + S.player.town.wood, font, color);
@@ -181,6 +182,7 @@ function initTextLabels() {
     
     S.textLabels = [];
     
+    S.textLabels.push(gatherersLabel);
     S.textLabels.push(foodLabel);
     S.textLabels.push(foodGatherLabel);
     S.textLabels.push(woodLabel);
@@ -203,9 +205,10 @@ function initTextLabels() {
 function initEvents() {
     
     var evtIntroText = ["", "Hello!", "Welcome to Sapphire!  This is a very long string in order to test text wrapping.  There should be several line breaks here automatically added in.", "This is also another long string.  Hopefully, again, the text is properly wrapped and contained within this textbox.  Otherwise this will be a very long single line", "Goodbye", ""]; 
-    var evtIntro = new Event(450, 200, false, 0, evtIntroText.length-1, evtIntroText);
+    var evtIntro = new Event(450, 200, false, 0, evtIntroText.length-1, evtIntroText, 0);
 
     S.events = [];
     
     S.events.push(evtIntro);
+
 }
