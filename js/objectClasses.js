@@ -40,7 +40,7 @@ function TextLabel(x, y, txt, font, color) {
 // ================================================================================
 // ============== Events
 // ================================================================================
-function Event(x, y, status, count, maxcount, evtTexts, initTime) {
+function Event(x, y, status, count, maxcount, evtTexts, initTime, doneScroll) {
     this.x = x;
     this.y = y;
     
@@ -51,5 +51,7 @@ function Event(x, y, status, count, maxcount, evtTexts, initTime) {
     
     this.evtTexts = evtTexts;
     
-    this.initTime = initTime
+    this.initTime = initTime;
+    
+    this.doneScroll = doneScroll;
 }

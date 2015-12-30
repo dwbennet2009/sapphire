@@ -13,19 +13,13 @@ $(document).ready(function () {
     S.begin();
 });
 
-function sleep(delay) {
-    var start = new Date().getTime();
-    while (new Date().getTime() < start + delay);
-}
 
 function wrapText(context, text, x, y, maxWidth, lineHeight, initTime, currTime) {
         var words = text.split('');
         var line = '';
-
-    console.log("Time: "+(currTime-initTime));
+    
     var wordLength = Math.round((currTime - initTime)/15);
     if (wordLength >= words.length) wordLength = words.length;
-    console.log(wordLength);
     for(var n = 0; n < wordLength; n++) {
         var testLine = line + words[n] + '';
         var metrics = context.measureText(testLine);
@@ -40,6 +34,9 @@ function wrapText(context, text, x, y, maxWidth, lineHeight, initTime, currTime)
         }
     }
     context.fillText(line, x, y);
+    
+    if(wordLength >= words.length) return true;
+    else    return false;
 }
 
 function wrapTextOld(context, text, x, y, maxWidth, lineHeight) {
