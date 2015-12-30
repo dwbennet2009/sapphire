@@ -119,6 +119,8 @@ Game.prototype.begin = function () {
     initEvents();
     requestAnimationFrame(this.loop.bind(this));
     
+   Game.prototype.checkEvents.lastBeep = TIME;
+    
 };
 
 Game.prototype.loop = function () {
@@ -153,9 +155,24 @@ Game.prototype.checkEvents = function () {
     {
         if(this.events[i].status == true){
             this.cxt.speech = new Image();
-            this.cxt.speech.src = "img/message1.png";
+            if(this.events[i].count<4){
+            this.cxt.speech.src = "img/messageGood.png";
+            var audio = new Audio('img/beepGood.wav');
+            }
+            else{
+            this.cxt.speech.src = "img/messageEvil.png";
+            var audio = new Audio('img/beepEvil.wav');
+            }
             this.cxt.drawImage(this.cxt.speech, this.events[i].x, this.events[i].y, 600, 400);
-            wrapText(this.cxt, this.events[i].evtTexts[this.events[i].count],this.events[i].x + 180, this.events[i].y + 70, 400, 28, this.events[i].initTime, TIME);
+            this.events[i].doneScroll = wrapText(this.cxt, this.events[i].evtTexts[this.events[i].count],this.events[i].x + 190, this.events[i].y + 40, 370, 28, this.events[i].initTime, TIME);
+            
+            if((TIME - Game.prototype.checkEvents.lastBeep) >= 90 && this.events[i].doneScroll == false){
+                audio.play();
+                console.log("BEEP");
+                Game.prototype.checkEvents.lastBeep = TIME;
+            }
+            
+            
             if(this.events[i].count>=this.events[i].maxcount)
             {
                 this.events[i].status = false;

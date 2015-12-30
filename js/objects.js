@@ -204,8 +204,8 @@ function initTextLabels() {
 
 function initEvents() {
     
-    var evtIntroText = ["", "Hello!", "Welcome to Sapphire!  This is a very long string in order to test text wrapping.  There should be several line breaks here automatically added in.", "This is also another long string.  Hopefully, again, the text is properly wrapped and contained within this textbox.  Otherwise this will be a very long single line", "Goodbye", ""]; 
-    var evtIntro = new Event(450, 200, false, 0, evtIntroText.length-1, evtIntroText, 0);
+    var evtIntroText = ["", "Hello!", "Welcome to Sapphire!  I am a good fairy thing.  You can tell by my cool colored eyes and smiling face and shading.  Also my beeps are rather light and higher pitches.", "But", "I am the evil fairy thing.  My eyes are red, a common theme for evil.  Also I have a more sinister mouth.  In addition, my beeps are lower.", "Goodbye", ""]; 
+    var evtIntro = new Event(450, 200, false, 0, evtIntroText.length-1, evtIntroText, 0, false);
 
     S.events = [];
     
