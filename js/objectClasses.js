@@ -40,7 +40,7 @@ function TextLabel(x, y, txt, font, color) {
 // ================================================================================
 // ============== Events
 // ================================================================================
-function Event(x, y, status, count, maxcount, evtTexts) {
+function Event(x, y, status, count, maxcount, evtTexts, initTime) {
     this.x = x;
     this.y = y;
     
@@ -50,4 +50,6 @@ function Event(x, y, status, count, maxcount, evtTexts) {
     this.maxcount = maxcount;
     
     this.evtTexts = evtTexts;
+    
+    this.initTime = initTime
 }

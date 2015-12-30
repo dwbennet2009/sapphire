@@ -3,6 +3,7 @@
 // ================================================================================
 var MS_PER_SECOND = 1000;
 var GATHER_TIME = MS_PER_SECOND;
+var TIME = 0;
 
 // ================================================================================
 // ============== GATHERER
@@ -77,6 +78,7 @@ function Game(canvas) {
     this.version = 0.2;
     this.player = new Player();
     this.lastUpdate = Date.now();
+    TIME = Date.now();
 
     this.mouse = {
         up: 0,
@@ -105,6 +107,7 @@ Game.prototype.onmousedown = function (event) {
     if (S.eventTrigger==true)
     {
         S.events[0].count++;
+        S.events[0].initTime = Date.now();
     }
 }
 
@@ -124,6 +127,7 @@ Game.prototype.loop = function () {
     var now = Date.now();
     var dt = now - this.lastUpdate;
     this.lastUpdate = now;
+    TIME = now;
 
     this.clearStatus();
     this.clearLand();
@@ -141,6 +145,7 @@ Game.prototype.loop = function () {
 Game.prototype.checkEvents = function () {
     if(S.player.town.food > 5 && S.events[0].status == false && S.events[0].count == 0){
         S.events[0].status = true;
+        S.events[0].initTime = TIME;
         S.eventTrigger = true;
     }
     
@@ -150,8 +155,7 @@ Game.prototype.checkEvents = function () {
             this.cxt.speech = new Image();
             this.cxt.speech.src = "img/message1.png";
             this.cxt.drawImage(this.cxt.speech, this.events[i].x, this.events[i].y, 600, 400);
-            //this.cxt.fillText(this.events[i].evtTexts[this.events[i].count],this.events[i].x + 200, this.events[i].y + 100);
-            wrapText(this.cxt, this.events[i].evtTexts[this.events[i].count],this.events[i].x + 180, this.events[i].y + 70, 400, 28);
+            wrapText(this.cxt, this.events[i].evtTexts[this.events[i].count],this.events[i].x + 180, this.events[i].y + 70, 400, 28, this.events[i].initTime, TIME);
             if(this.events[i].count>=this.events[i].maxcount)
             {
                 this.events[i].status = false;
@@ -242,5 +246,4 @@ Game.prototype.resize = function () {
     // Draw static text
 
     this.cxt.font = '100 22px Arial';
-    this.cxt.fillText("Gatherers", 500, 80);
 };
