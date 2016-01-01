@@ -55,3 +55,53 @@ function Event(x, y, status, count, maxcount, evtTexts, initTime, doneScroll) {
     
     this.doneScroll = doneScroll;
 }
+
+// ================================================================================
+// ============== Resource
+// ================================================================================
+function Resource(name, amount) {
+    this.name = name;
+    this.amount = amount;
+    
+    this.call = function () {
+        return this.amount;
+    };
+
+}
+
+// ================================================================================
+// ============== Resource
+// ================================================================================
+function Building(name, amount, costF, costW, costS){
+    this.name = name;
+    this.amount = amount;
+    this.costF = costF;
+    this.costW = costW;
+    this.costS = costS;
+    
+    this.getCount = function () {
+        return this.amount;
+    };
+    
+    this.getCostF = function () {
+        return this.costF;
+    };
+    
+    this.getCostW = function () {
+        return this.costW;
+    };
+    
+    this.getCostS = function () {
+        return this.costS;
+    }; 
+
+}
+
+// ================================================================================
+// ============== Gatherers
+// ================================================================================
+function Gatherer(name, resource, amount){
+    this.name = name;
+    this.resource = resource;
+    this.amount = amount;
+}

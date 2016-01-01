@@ -6,35 +6,9 @@ var GATHER_TIME = MS_PER_SECOND;
 var TIME = 0;
 
 // ================================================================================
-// ============== GATHERER
-// ================================================================================
-function Gatherer(resource) {
-    this.trips = 0;
-    this.resource = resource;
-}
-
-// ================================================================================
 // ============== TOWN
 // ================================================================================
 function Town() {
-    this.wood = 0;
-    this.stone = 0;
-    this.food = 0;
-
-    this.houses = 0;
-    this.houseCostW = 20;
-    this.houseCostS = 20;
-    this.mills = 0;
-    this.millCostW = 10;
-    this.millCostS = 30;
-    this.quarries = 0;
-    this.quarryCostW = 30;
-    this.quarryCostS = 10;
-
-    this.woodGather = 0;
-    this.stoneGather = 0;
-    this.foodGather = 0;
-    this.unempGather = 0;
     this.unempCost = 20;
     
     this.villagers = 0;
@@ -49,9 +23,9 @@ Town.prototype.tick = function (dt) {
     while (this.gatherClock >= GATHER_TIME) {
         this.gatherClock -= GATHER_TIME;
 
-        this.food += this.foodGather;
-        this.wood += this.woodGather;
-        this.stone += this.stoneGather;
+        Resource["Food"].amount += Gatherer["Food"].amount;
+        Resource["Wood"].amount += Gatherer["Wood"].amount;
+        Resource["Stone"].amount += Gatherer["Stone"].amount;
     }
 }
 
@@ -75,7 +49,7 @@ function Game(canvas) {
     this.canvas = canvas;
 
     this.title = "Sapphire";
-    this.version = 0.2;
+    this.version = 0.3;
     this.player = new Player();
     this.lastUpdate = Date.now();
     TIME = Date.now();
@@ -115,11 +89,14 @@ Game.prototype.begin = function () {
     this.resize();
     
     initButtons();
+    initGatherers();
+    initRes();
+    initBuildings();
     initTextLabels();
     initEvents();
     requestAnimationFrame(this.loop.bind(this));
     
-   Game.prototype.checkEvents.lastBeep = TIME;
+    Game.prototype.checkEvents.lastBeep = TIME;
     
 };
 
@@ -145,7 +122,7 @@ Game.prototype.loop = function () {
 };
 
 Game.prototype.checkEvents = function () {
-    if(S.player.town.food > 5 && S.events[0].status == false && S.events[0].count == 0){
+    if(Resource["Food"].amount > 5 && S.events[0].status == false && S.events[0].count == 0){
         S.events[0].status = true;
         S.events[0].initTime = TIME;
         S.eventTrigger = true;
@@ -207,7 +184,7 @@ Game.prototype.renderButtons = function () {
 
 Game.prototype.clearLand = function () {
     this.cxt.clearRect(900, 100, 700, 550);
-    this.cxt.clearRect(200, 520, 500, 250);
+    this.cxt.clearRect(200, 520, 500, 25);
 };
 
 Game.prototype.renderLand = function () {
@@ -245,8 +222,8 @@ Game.prototype.renderAbout = function () {
     var versionTxt = this.title+":  Version - "+this.version;
     var fontOld = this.cxt.font;
     this.cxt.font = '100 30px Arial';
-    wrapText(this.cxt, aboutTxt, 920,150,650,33);
-    wrapText(this.cxt, versionTxt, 920,350,650,33);
+    wrapText(this.cxt, aboutTxt, 920,150,650,33, 0, TIME);
+    wrapText(this.cxt, versionTxt, 920,350,650,33, 0, TIME);
     this.cxt.font = fontOld;
     
     
