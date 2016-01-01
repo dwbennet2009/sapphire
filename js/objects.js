@@ -1,96 +1,96 @@
 function initButtons() {
     var plusButtonFood = new Button(720, 110, 35, 35,'img/plus.png');
     plusButtonFood.action = function () {
-        if (S.player.town.unempGather > 0) {
-            S.player.town.foodGather++;
-            S.player.town.unempGather--;
+        if (Gatherer["Unemployed"].amount > 0) {
+            Gatherer["Food"].amount++;
+            Gatherer["Unemployed"].amount--;
         }
     };
 
     var minusButtonFood = new Button(780, 110, 35, 35,'img/minus.png');
     minusButtonFood.action = function () {
-        if (S.player.town.foodGather > 0) {
-            S.player.town.foodGather--;
-            S.player.town.unempGather++;
+        if (Gatherer["Food"].amount > 0) {
+            Gatherer["Food"].amount--;
+            Gatherer["Unemployed"].amount++;
         }
     };
 
     var plusButtonWood = new Button(720, 150, 35, 35,'img/plus.png');
     plusButtonWood.action = function () {
-        if (S.player.town.unempGather > 0) {
-            S.player.town.woodGather++;
-            S.player.town.unempGather--;
+        if (Gatherer["Unemployed"].amount > 0) {
+            Gatherer["Wood"].amount++;
+            Gatherer["Unemployed"].amount--;
         }
     };
 
     var minusButtonWood = new Button(780, 150, 35, 35,'img/minus.png');
     minusButtonWood.action = function () {
-        if (S.player.town.woodGather > 0) {
-            S.player.town.woodGather--;
-            S.player.town.unempGather++;
+        if (Gatherer["Wood"].amount > 0) {
+            Gatherer["Wood"].amount--;
+            Gatherer["Unemployed"].amount++;
         }
     };
 
     var plusButtonStone = new Button(720, 190, 35, 35,'img/plus.png');
     plusButtonStone.action = function () {
-        if (S.player.town.unempGather > 0) {
-            S.player.town.stoneGather++;
-            S.player.town.unempGather--;
+        if (Gatherer["Unemployed"].amount > 0) {
+            Gatherer["Stone"].amount++;
+            Gatherer["Unemployed"].amount--;
         }
     };
 
     var minusButtonStone = new Button(780, 190, 35, 35, 'img/minus.png');
     minusButtonStone.action = function () {
-        if (S.player.town.stoneGather > 0) {
-            S.player.town.stoneGather--;
-            S.player.town.unempGather++;
+        if (Gatherer["Stone"].amount > 0) {
+            Gatherer["Stone"].amount--;
+            Gatherer["Unemployed"].amount++;
         }
     };
 
     var buyHouse = new Button(620, 550, 70, 35,'img/buy.png');
     buyHouse.action = function () {
-        if(S.player.town.wood >= S.player.town.houseCostW && S.player.town.stone >= S.player.town.houseCostS){
-            S.player.town.houses++;
-            S.player.town.wood -= S.player.town.houseCostW;
-            S.player.town.stone -= S.player.town.houseCostS;
-            S.player.town.houseCostW = Math.round(S.player.town.houseCostW * 1.20);
-            S.player.town.houseCostS = Math.round(S.player.town.houseCostS * 1.20);
+        if(Resource["Wood"].amount >= Building["House"].getCostW() && Resource["Stone"].amount >= Building["House"].getCostS()){
+            Building["House"].amount++;
+            Resource["Wood"].amount -= Building["House"].getCostW();
+            Resource["Stone"].amount -= Building["House"].getCostS();
+            Building["House"].costW = Math.round(Building["House"].costW * 1.20);
+            Building["House"].costS = Math.round(Building["House"].costS * 1.20);
             S.player.town.villagersMax += 3;
         }
     };
 
     var buyMill = new Button(620, 590, 70, 35, 'img/buy.png');
     buyMill.action = function () {
-        if(S.player.town.wood >= S.player.town.millCostW && S.player.town.stone >= S.player.town.millCostS){
-            S.player.town.mills++;
-            S.player.town.wood -= S.player.town.millCostW;
-            S.player.town.stone -= S.player.town.millCostS;
-            S.player.town.millCostW = Math.round(S.player.town.millCostW * 1.20);
-            S.player.town.millCostS = Math.round(S.player.town.millCostS * 1.20);
+        if(Resource["Wood"].amount >= Building["Mill"].getCostW() && Resource["Stone"].amount >= Building["Mill"].getCostS()){
+            Building["Mill"].amount++;
+            Resource["Wood"].amount -= Building["Mill"].getCostW();
+            Resource["Stone"].amount -= Building["Mill"].getCostS();
+            Building["Mill"].costW = Math.round(Building["Mill"].costW * 1.20);
+            Building["Mill"].costS = Math.round(Building["Mill"].costS * 1.20);
         }
     };
 
     var buyQuarry = new Button(620, 630, 70, 35, 'img/buy.png');
     buyQuarry.action = function () {
-        if(S.player.town.wood >= S.player.town.quarryCostW && S.player.town.stone >= S.player.town.quarryCostS){
-            S.player.town.quarries++;
-            S.player.town.wood -= S.player.town.quarryCostW;
-            S.player.town.stone -= S.player.town.quarryCostS;
-            S.player.town.quarryCostW = Math.round(S.player.town.quarryCostW * 1.20);
-            S.player.town.quarryCostS = Math.round(S.player.town.quarryCostS * 1.20);
+        if(Resource["Wood"].amount >= Building["Quarry"].getCostW() && Resource["Stone"].amount >= Building["Quarry"].getCostS()){
+            Building["Quarry"].amount++;
+            Resource["Wood"].amount -= Building["Quarry"].getCostW();
+            Resource["Stone"].amount -= Building["Quarry"].getCostS();
+            Building["Quarry"].costW = Math.round(Building["Quarry"].costW * 1.20);
+            Building["Quarry"].costS = Math.round(Building["Quarry"].costS * 1.20);
         }
     };
 
     var farmButton = new Button(320, 400, 100, 50, 'img/farm.png');
     farmButton.action = function () {
-        S.player.town.food++;
+        Resource["Food"].amount++;
     };
 
     var hireButton = new Button(450, 400, 100, 50,'img/hire.png');
     hireButton.action = function () {
-        if (S.player.town.food >= S.player.town.unempCost && S.player.town.villagers < S.player.town.villagersMax) {
-            S.player.town.unempGather++;
-            S.player.town.food -= S.player.town.unempCost;
+        if (Resource["Food"].amount >= S.player.town.unempCost && S.player.town.villagers < S.player.town.villagersMax) {
+            Gatherer["Unemployed"].amount++;
+            Resource["Food"].amount -= S.player.town.unempCost;
             S.player.town.unempCost = Math.round(S.player.town.unempCost*1.15);
             S.player.town.villagers++;
         }
@@ -158,26 +158,26 @@ function initTextLabels() {
     var color = '#434382';
    
     var gatherersLabel = new TextLabel(500, 80, "Gatherers", font, color);
-    var foodLabel = new TextLabel(240,140,"Food: " + S.player.town.food,font, color);
-    var foodGatherLabel = new TextLabel(540,140,S.player.town.foodGather, font, color);
-    var woodLabel = new TextLabel(240,180,"Wood: " + S.player.town.wood, font, color);
-    var woodGatherLabel = new TextLabel(540, 180, S.player.town.woodGather, font, color);
-    var stoneLabel = new TextLabel(240,220,"Stone: " + S.player.town.stone, font, color);
-    var stoneGatherLabel = new TextLabel(540, 220, S.player.town.stoneGather, font, color);
+    var foodLabel = new TextLabel(240,140,"Food: " + Resource["Food"].call(),font, color);
+    var foodGatherLabel = new TextLabel(540,140,Gatherer["Food"].amount, font, color);
+    var woodLabel = new TextLabel(240,180,"Wood: " + Resource["Wood"].amount, font, color);
+    var woodGatherLabel = new TextLabel(540, 180, Gatherer["Wood"].amount, font, color);
+    var stoneLabel = new TextLabel(240,220,"Stone: " + Resource["Stone"].amount, font, color);
+    var stoneGatherLabel = new TextLabel(540, 220, Gatherer["Stone"].amount, font, color);
 
     var unempLabel = new TextLabel(350, 300, "Unemployed: ", font, color);
-    var unempGatherLabel = new TextLabel(540, 300, S.player.town.unempGather, font, color);
+    var unempGatherLabel = new TextLabel(540, 300, Gatherer["Unemployed"].amount, font, color);
     var unempCostLabel = new TextLabel(600, 300, "(Cost: "+ S.player.town.unempCost +")", font, color);
     
     var villagersLabel = new TextLabel(350, 340, "Villagers: ", font, color);
     var villagersMaxLabel = new TextLabel(540, 340, S.player.town.villagers+" / "+S.player.town.villagersMax, font, color);
 
-    var houseLabel = new TextLabel(240, 580, "Houses: " + S.player.town.houses, font, color);
-    var houseCostLabel = new TextLabel(380, 580, "( "+ S.player.town.houseCostW+ " W / "+S.player.town.houseCostS+ " S )", font, color);
-    var millLabel = new TextLabel(240, 620, "Mills: " + S.player.town.mills, font, color);
-    var millCostLabel = new TextLabel(380, 620, "( "+ S.player.town.millCostW+ " W / "+S.player.town.millCostS+ " S )", font, color);
-    var quarryLabel = new TextLabel(240, 660, "Quarries: " + S.player.town.quarries, font, color);
-    var quarryCostLabel = new TextLabel(380, 660, "( "+ S.player.town.quarryCostW+ " W / "+S.player.town.quarryCostS+ " S )", font, color);
+    var houseLabel = new TextLabel(240, 580, "Houses: " + Building["House"].getCount(), font, color);
+    var houseCostLabel = new TextLabel(380, 580, "( "+ Building["House"].getCostW()+ " W / "+Building["House"].getCostS()+ " S )", font, color);
+    var millLabel = new TextLabel(240, 620, "Mills: " + Building["Mill"].getCount(), font, color);
+    var millCostLabel = new TextLabel(380, 620, "( "+ Building["Mill"].getCostW()+ " W / "+Building["Mill"].getCostS()+ " S )", font, color);
+    var quarryLabel = new TextLabel(240, 660, "Quarries: " +Building["Quarry"].getCount(), font, color);
+    var quarryCostLabel = new TextLabel(380, 660, "( "+ Building["Quarry"].getCostW()+ " W / "+Building["Quarry"].getCostS()+ " S )", font, color);
     
     
     S.textLabels = [];
@@ -212,3 +212,24 @@ function initEvents() {
     S.events.push(evtIntro);
 
 }
+
+function initRes() {
+    Resource["Food"] = new Resource("Food",0);
+    Resource["Wood"] = new Resource("Wood",0);
+    Resource["Stone"] = new Resource("Stone",0);   
+}
+
+function initBuildings() {
+    Building["House"] = new Building("House",0,0,20,20);
+    Building["Mill"] = new Building("Mill",0,0,10,30);
+    Building["Quarry"] = new Building("Quarry",0,0,30,10); 
+}
+
+function initGatherers() {
+    console.log("ONE");
+    Gatherer["Food"] = new Gatherer("Food","Food",0);
+    Gatherer["Wood"] = new Gatherer("Wood","Wood",0);
+    Gatherer["Stone"] = new Gatherer("Stone","Stone",0); 
+    Gatherer["Unemployed"] = new Gatherer("Unemployed","None",0); 
+}
+
